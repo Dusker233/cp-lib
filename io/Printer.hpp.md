@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/DSU.test.cpp
     title: test/library_checker/DSU.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/static_range_sum.test.cpp
     title: test/library_checker/static_range_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE\
@@ -40,7 +40,7 @@ data:
     \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
     \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
-    \ this->print(x), this.putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    \ this->print(x), this->putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
     char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n"
   code: "#pragma once\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE *f = stdout,\
     \ std::size_t buffer_size = 100000)\n\t\t: f_(f), buffer_(new char[buffer_size\
@@ -65,14 +65,14 @@ data:
     \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
     \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
-    \ this->print(x), this.putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    \ this->print(x), this->putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
     char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};"
   dependsOn: []
   isVerificationFile: false
   path: io/Printer.hpp
   requiredBy: []
-  timestamp: '2023-08-13 19:18:30+08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-08-13 19:20:30+08:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp

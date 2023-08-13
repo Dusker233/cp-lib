@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/1D-fenwick.hpp
     title: data_structure/1D-fenwick.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: head.hpp
     title: head.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: io/Printer.hpp
     title: io/Printer.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: io/Scanner.hpp
     title: io/Scanner.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -70,7 +70,7 @@ data:
     \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
     \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
-    \ this->print(x), this.putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    \ this->print(x), this->putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
     char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n#line 6 \"test/library_checker/point_add_range_sum.test.cpp\"\
     \n\nusing i64 = long long;\nconstexpr int mmax = 5E5 + 10;\n\nScanner scanner;\n\
     Printer printer;\nFenwick<i64> fenwick(mmax);\n\nint main()\n{\n    i64 n, q;\n\
@@ -99,8 +99,8 @@ data:
   isVerificationFile: true
   path: test/library_checker/point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-13 19:18:30+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-13 19:20:30+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library_checker/point_add_range_sum.test.cpp
 layout: document
