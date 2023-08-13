@@ -3,15 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library_checker/DSU.test.cpp
     title: test/library_checker/DSU.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/library_checker/static_range_sum.test.cpp
+    title: test/library_checker/static_range_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE\
@@ -36,8 +39,9 @@ data:
     \ y * 10 + '0';\n\t\t\tx = y;\n\t\t} while(x != 0);\n\t\tif(buffer_end_ - buffer_head_\
     \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
-    \ print(x));\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_,\
-    \ *buffer_end_, *stk_, *top_;\n};\n"
+    \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
+    \ this->print(x), this.putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n"
   code: "#pragma once\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE *f = stdout,\
     \ std::size_t buffer_size = 100000)\n\t\t: f_(f), buffer_(new char[buffer_size\
     \ + 32]), buffer_head_(buffer_),\n\t\t  buffer_end_(buffer_ + buffer_size + 32),\
@@ -60,17 +64,19 @@ data:
     \ y * 10 + '0';\n\t\t\tx = y;\n\t\t} while(x != 0);\n\t\tif(buffer_end_ - buffer_head_\
     \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
-    \ print(x));\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_,\
-    \ *buffer_end_, *stk_, *top_;\n};"
+    \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
+    \ this->print(x), this.putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};"
   dependsOn: []
   isVerificationFile: false
   path: io/Printer.hpp
   requiredBy: []
-  timestamp: '2023-08-13 18:04:56+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-08-13 19:18:30+08:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp
+  - test/library_checker/static_range_sum.test.cpp
 documentation_of: io/Printer.hpp
 layout: document
 redirect_from:

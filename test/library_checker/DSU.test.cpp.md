@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/DSU.hpp
     title: data_structure/DSU.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: head.hpp
     title: head.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: io/Printer.hpp
     title: io/Printer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: io/Scanner.hpp
     title: io/Scanner.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -70,14 +70,15 @@ data:
     \ = x / 10;\n\t\t\t*top_++ = x - y * 10 + '0';\n\t\t\tx = y;\n\t\t} while(x !=\
     \ 0);\n\t\tif(buffer_end_ - buffer_head_ < top_ - stk_)\n\t\t\tflush();\n\t\t\
     while(top_ != stk_) *buffer_head_++ = *--top_;\n\t}\n\n\ttemplate<typename...\
-    \ T>\n\tvoid print(T... x)\n\t{\n\t\treturn (..., print(x));\n\t}\n\nprivate:\n\
-    \tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n\
-    };\n#line 6 \"test/library_checker/DSU.test.cpp\"\n\nScanner scanner;\nPrinter\
-    \ printer;\n\nint main()\n{\n\t#ifdef ONLINE_JUDGE\n\tioclear;\n\t#endif\n\n\t\
-    int n, q;\n\tscanner.scan(n, q);\n\tDSU<int> dsu(n + 10);\n\tfor(int i = 1;i <=\
-    \ q;i++)\n\t{\n\t\tint t, u, v;\n\t\tscanner.scan(t, u, v);\n\t\tif(t == 0)\n\t\
-    \t\tdsu.merge(u, v);\n\t\telse\n\t\t\tprinter.print(dsu.same(u, v)), printer.putchar('\\\
-    n');\n\t}\n}\n"
+    \ T>\n\tvoid print(T... x)\n\t{\n\t\treturn (..., print(x));\n\t}\n\n\ttemplate<typename\
+    \ T>\n\tvoid println(T x)\n\t{\n\t\treturn this->print(x), this.putchar('\\n');\n\
+    \t}\n\nprivate:\n\tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_, *buffer_end_,\
+    \ *stk_, *top_;\n};\n#line 6 \"test/library_checker/DSU.test.cpp\"\n\nScanner\
+    \ scanner;\nPrinter printer;\n\nint main()\n{\n\t#ifdef ONLINE_JUDGE\n\tioclear;\n\
+    \t#endif\n\n\tint n, q;\n\tscanner.scan(n, q);\n\tDSU<int> dsu(n + 10);\n\tfor(int\
+    \ i = 1;i <= q;i++)\n\t{\n\t\tint t, u, v;\n\t\tscanner.scan(t, u, v);\n\t\tif(t\
+    \ == 0)\n\t\t\tdsu.merge(u, v);\n\t\telse\n\t\t\tprinter.print(dsu.same(u, v)),\
+    \ printer.putchar('\\n');\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
     head.hpp\"\n#include \"data_structure/DSU.hpp\"\n#include \"io/Scanner.hpp\"\n\
     #include \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\nint main()\n\
@@ -93,8 +94,8 @@ data:
   isVerificationFile: true
   path: test/library_checker/DSU.test.cpp
   requiredBy: []
-  timestamp: '2023-08-13 18:04:56+08:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-13 19:18:30+08:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library_checker/DSU.test.cpp
 layout: document

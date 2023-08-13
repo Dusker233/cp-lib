@@ -3,15 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library_checker/DSU.test.cpp
     title: test/library_checker/DSU.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/library_checker/static_range_sum.test.cpp
+    title: test/library_checker/static_range_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: '#line 1 "head.hpp"
@@ -47,10 +50,11 @@ data:
   path: head.hpp
   requiredBy: []
   timestamp: '2023-08-13 18:01:43+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp
+  - test/library_checker/static_range_sum.test.cpp
 documentation_of: head.hpp
 layout: document
 redirect_from:

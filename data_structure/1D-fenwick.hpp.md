@@ -3,12 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/library_checker/static_range_sum.test.cpp
+    title: test/library_checker/static_range_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/1D-fenwick.hpp\"\n\ntemplate<typename T>\n\
@@ -28,9 +31,10 @@ data:
   path: data_structure/1D-fenwick.hpp
   requiredBy: []
   timestamp: '2023-08-13 19:08:09+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
+  - test/library_checker/static_range_sum.test.cpp
 documentation_of: data_structure/1D-fenwick.hpp
 layout: document
 redirect_from:
