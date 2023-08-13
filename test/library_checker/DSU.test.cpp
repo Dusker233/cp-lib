@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 #include "head.hpp"
 #include "data_structure/DSU.hpp"
-#include "Scanner.hpp"
-#include "Printer.hpp"
+#include "io/Scanner.hpp"
+#include "io/Printer.hpp"
 
 Scanner scanner;
 Printer printer;
