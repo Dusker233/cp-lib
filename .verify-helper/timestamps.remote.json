@@ -1,1 +1,5 @@
-{}
+{
+"test/library_checker/DSU.test.cpp": "2023-08-13 19:20:30 +0800",
+"test/library_checker/point_add_range_sum.test.cpp": "2023-08-13 19:20:30 +0800",
+"test/library_checker/static_range_sum.test.cpp": "2023-08-13 19:20:30 +0800"
+}
