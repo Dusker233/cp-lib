@@ -84,7 +84,7 @@ public:
 	template<typename T>
 	void println(T x)
 	{
-		return this->print(x), this.putchar('\n');
+		return this->print(x), this->putchar('\n');
 	}
 
 private:
