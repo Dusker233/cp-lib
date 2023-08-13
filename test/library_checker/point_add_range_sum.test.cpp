@@ -7,20 +7,22 @@
 Scanner scanner;
 Printer printer;
 
+using i64 = long long;
+
 int main()
 {
-    int n, q;
+    i64 n, q;
     scanner.scan(n, q);
-    Fenwick<int> fenwick(n);
+    Fenwick<i64> fenwick(n);
     for(int i = 1;i <= n;i++)
     {
-            int x;
+            i64 x;
             scanner.scan(x);
             fenwick.add(i, x);
     }
     for(int i = 1;i <= q;i++)
     {
-            int op, l, r;
+            i64 op, l, r;
             scanner.scan(op, l, r);
             if(op == 0)
                     fenwick.add(++l, r);
