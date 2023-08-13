@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE\
+  bundledCode: "#line 2 \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE\
     \ *f = stdout, std::size_t buffer_size = 100000)\n\t\t: f_(f), buffer_(new char[buffer_size\
     \ + 32]), buffer_head_(buffer_),\n\t\t  buffer_end_(buffer_ + buffer_size + 32),\
     \ stk_(new char[32]), top_(stk_) {}\n\t~Printer()\n\t{\n\t\tflush();\n\t\tdelete[]\
@@ -61,16 +61,16 @@ data:
     \ *buffer_end_, *stk_, *top_;\n};"
   dependsOn: []
   isVerificationFile: false
-  path: Printer.hpp
+  path: io/Printer.hpp
   requiredBy: []
-  timestamp: '2023-08-13 18:01:43+08:00'
+  timestamp: '2023-08-13 18:04:56+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/DSU.test.cpp
-documentation_of: Printer.hpp
+documentation_of: io/Printer.hpp
 layout: document
 redirect_from:
-- /library/Printer.hpp
-- /library/Printer.hpp.html
-title: Printer.hpp
+- /library/io/Printer.hpp
+- /library/io/Printer.hpp.html
+title: io/Printer.hpp
 ---

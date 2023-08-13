@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Scanner.hpp\"\n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE\
+  bundledCode: "#line 2 \"io/Scanner.hpp\"\n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE\
     \ *f = stdin, std::size_t enough_buffer_size = 1 << 25)\n\t\t: f_(f), buffer_(new\
     \ char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\t\t  buffer_tail_(buffer_\
     \ + std::fread(buffer_, sizeof(char), enough_buffer_size + 32, f_)) {*buffer_tail_\
@@ -41,16 +41,16 @@ data:
     \ *buffer_tail_;\n};"
   dependsOn: []
   isVerificationFile: false
-  path: Scanner.hpp
+  path: io/Scanner.hpp
   requiredBy: []
-  timestamp: '2023-08-13 18:01:43+08:00'
+  timestamp: '2023-08-13 18:04:56+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/DSU.test.cpp
-documentation_of: Scanner.hpp
+documentation_of: io/Scanner.hpp
 layout: document
 redirect_from:
-- /library/Scanner.hpp
-- /library/Scanner.hpp.html
-title: Scanner.hpp
+- /library/io/Scanner.hpp
+- /library/io/Scanner.hpp.html
+title: io/Scanner.hpp
 ---

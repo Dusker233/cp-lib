@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Printer.hpp
-    title: Printer.hpp
-  - icon: ':heavy_check_mark:'
-    path: Scanner.hpp
-    title: Scanner.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/DSU.hpp
     title: data_structure/DSU.hpp
   - icon: ':heavy_check_mark:'
     path: head.hpp
     title: head.hpp
+  - icon: ':heavy_check_mark:'
+    path: io/Printer.hpp
+    title: io/Printer.hpp
+  - icon: ':heavy_check_mark:'
+    path: io/Scanner.hpp
+    title: io/Scanner.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -35,7 +35,7 @@ data:
     \ T y) {return find(x) == find(y);}\n\n\tbool merge(T x, T y)\n\t{\n\t\tx = find(x);\n\
     \t\ty = find(y);\n\t\tif(x == y)\n\t\t\treturn false;\n\t\tsiz[x] += siz[y];\n\
     \t\tf[y] = x;\n\t\treturn true;\n\t}\n\n\tT size(T x) {return siz[find(x)];}\n\
-    };\n#line 2 \"Scanner.hpp\"\n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE\
+    };\n#line 2 \"io/Scanner.hpp\"\n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE\
     \ *f = stdin, std::size_t enough_buffer_size = 1 << 25)\n\t\t: f_(f), buffer_(new\
     \ char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\t\t  buffer_tail_(buffer_\
     \ + std::fread(buffer_, sizeof(char), enough_buffer_size + 32, f_)) {*buffer_tail_\
@@ -48,8 +48,8 @@ data:
     \ x = x * 10 + (*buffer_head_++ - '0');\n\t\treturn buffer_head_ != old_buffer_head;\n\
     \t}  \n\n\ttemplate<typename... T>\n\tbool scan(T &...x)\n\t{\n\t\treturn (...\
     \ && scan(x));\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_,\
-    \ *buffer_tail_;\n};\n#line 2 \"Printer.hpp\"\n\nclass Printer\n{\npublic:\n\t\
-    Printer(std::FILE *f = stdout, std::size_t buffer_size = 100000)\n\t\t: f_(f),\
+    \ *buffer_tail_;\n};\n#line 2 \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\
+    \tPrinter(std::FILE *f = stdout, std::size_t buffer_size = 100000)\n\t\t: f_(f),\
     \ buffer_(new char[buffer_size + 32]), buffer_head_(buffer_),\n\t\t  buffer_end_(buffer_\
     \ + buffer_size + 32), stk_(new char[32]), top_(stk_) {}\n\t~Printer()\n\t{\n\t\
     \tflush();\n\t\tdelete[] stk_;\n\t\tdelete[] buffer_;\n\t}\n\n\tvoid flush()\n\
@@ -79,21 +79,21 @@ data:
     \t\tdsu.merge(u, v);\n\t\telse\n\t\t\tprinter.print(dsu.same(u, v)), printer.putchar('\\\
     n');\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
-    head.hpp\"\n#include \"data_structure/DSU.hpp\"\n#include \"Scanner.hpp\"\n#include\
-    \ \"Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\t#ifdef\
-    \ ONLINE_JUDGE\n\tioclear;\n\t#endif\n\n\tint n, q;\n\tscanner.scan(n, q);\n\t\
-    DSU<int> dsu(n + 10);\n\tfor(int i = 1;i <= q;i++)\n\t{\n\t\tint t, u, v;\n\t\t\
-    scanner.scan(t, u, v);\n\t\tif(t == 0)\n\t\t\tdsu.merge(u, v);\n\t\telse\n\t\t\
-    \tprinter.print(dsu.same(u, v)), printer.putchar('\\n');\n\t}\n}"
+    head.hpp\"\n#include \"data_structure/DSU.hpp\"\n#include \"io/Scanner.hpp\"\n\
+    #include \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\nint main()\n\
+    {\n\t#ifdef ONLINE_JUDGE\n\tioclear;\n\t#endif\n\n\tint n, q;\n\tscanner.scan(n,\
+    \ q);\n\tDSU<int> dsu(n + 10);\n\tfor(int i = 1;i <= q;i++)\n\t{\n\t\tint t, u,\
+    \ v;\n\t\tscanner.scan(t, u, v);\n\t\tif(t == 0)\n\t\t\tdsu.merge(u, v);\n\t\t\
+    else\n\t\t\tprinter.print(dsu.same(u, v)), printer.putchar('\\n');\n\t}\n}"
   dependsOn:
   - head.hpp
   - data_structure/DSU.hpp
-  - Scanner.hpp
-  - Printer.hpp
+  - io/Scanner.hpp
+  - io/Printer.hpp
   isVerificationFile: true
   path: test/library_checker/DSU.test.cpp
   requiredBy: []
-  timestamp: '2023-08-13 18:01:43+08:00'
+  timestamp: '2023-08-13 18:04:56+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library_checker/DSU.test.cpp

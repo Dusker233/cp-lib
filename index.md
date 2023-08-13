@@ -1,22 +1,24 @@
 ---
 data:
   libraryCategories:
-  - name: .
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: Printer.hpp
-      title: Printer.hpp
-    - icon: ':heavy_check_mark:'
-      path: Scanner.hpp
-      title: Scanner.hpp
-    - icon: ':heavy_check_mark:'
-      path: head.hpp
-      title: head.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
       path: data_structure/DSU.hpp
       title: data_structure/DSU.hpp
+  - name: .
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: head.hpp
+      title: head.hpp
+  - name: io
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: io/Printer.hpp
+      title: io/Printer.hpp
+    - icon: ':heavy_check_mark:'
+      path: io/Scanner.hpp
+      title: io/Scanner.hpp
   verificationCategories:
   - name: test/library_checker
     pages:
