@@ -13,7 +13,7 @@ int main()
 {
     i64 n, q;
     scanner.scan(n, q);
-    Fenwick<i64> fenwick(n);
+    Fenwick<i64> fenwick(n + 10);
     for(int i = 1;i <= n;i++)
     {
             i64 x;
