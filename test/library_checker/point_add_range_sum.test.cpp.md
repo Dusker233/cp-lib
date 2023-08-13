@@ -71,23 +71,24 @@ data:
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
     \ print(x));\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_,\
     \ *buffer_end_, *stk_, *top_;\n};\n#line 6 \"test/library_checker/point_add_range_sum.test.cpp\"\
-    \n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n    int n, q;\n    scanner.scan(n,\
-    \ q);\n    Fenwick<int> fenwick(n);\n    for(int i = 1;i <= n;i++)\n    {\n  \
-    \          int x;\n            scanner.scan(x);\n            fenwick.add(i, x);\n\
-    \    }\n    for(int i = 1;i <= q;i++)\n    {\n            int op, l, r;\n    \
-    \        scanner.scan(op, l, r);\n            if(op == 0)\n                  \
-    \  fenwick.add(++l, r);\n            else\n                    printer.print(fenwick.Rangesum(++l,\
-    \ r)), printer.putchar('\\n');\n    }\n}\n"
+    \n\nScanner scanner;\nPrinter printer;\n\nusing i64 = long long;\n\nint main()\n\
+    {\n    i64 n, q;\n    scanner.scan(n, q);\n    Fenwick<i64> fenwick(n + 10);\n\
+    \    for(int i = 1;i <= n;i++)\n    {\n            i64 x;\n            scanner.scan(x);\n\
+    \            fenwick.add(i, x);\n    }\n    for(int i = 1;i <= q;i++)\n    {\n\
+    \            i64 op, l, r;\n            scanner.scan(op, l, r);\n            if(op\
+    \ == 0)\n                    fenwick.add(++l, r);\n            else\n        \
+    \            printer.print(fenwick.Rangesum(++l, r)), printer.putchar('\\n');\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include \"head.hpp\"\n#include \"data_structure/1D-fenwick.hpp\"\n#include \"\
     io/Scanner.hpp\"\n#include \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\
-    \nint main()\n{\n    int n, q;\n    scanner.scan(n, q);\n    Fenwick<int> fenwick(n);\n\
-    \    for(int i = 1;i <= n;i++)\n    {\n            int x;\n            scanner.scan(x);\n\
-    \            fenwick.add(i, x);\n    }\n    for(int i = 1;i <= q;i++)\n    {\n\
-    \            int op, l, r;\n            scanner.scan(op, l, r);\n            if(op\
-    \ == 0)\n                    fenwick.add(++l, r);\n            else\n        \
-    \            printer.print(fenwick.Rangesum(++l, r)), printer.putchar('\\n');\n\
-    \    }\n}"
+    \nusing i64 = long long;\n\nint main()\n{\n    i64 n, q;\n    scanner.scan(n,\
+    \ q);\n    Fenwick<i64> fenwick(n + 10);\n    for(int i = 1;i <= n;i++)\n    {\n\
+    \            i64 x;\n            scanner.scan(x);\n            fenwick.add(i,\
+    \ x);\n    }\n    for(int i = 1;i <= q;i++)\n    {\n            i64 op, l, r;\n\
+    \            scanner.scan(op, l, r);\n            if(op == 0)\n              \
+    \      fenwick.add(++l, r);\n            else\n                    printer.print(fenwick.Rangesum(++l,\
+    \ r)), printer.putchar('\\n');\n    }\n}"
   dependsOn:
   - head.hpp
   - data_structure/1D-fenwick.hpp
@@ -96,7 +97,7 @@ data:
   isVerificationFile: true
   path: test/library_checker/point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-13 19:08:09+08:00'
+  timestamp: '2023-08-13 19:11:56+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library_checker/point_add_range_sum.test.cpp
