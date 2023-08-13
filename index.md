@@ -12,6 +12,9 @@ data:
   - name: .
     pages:
     - icon: ':heavy_check_mark:'
+      path: debug.hpp
+      title: debug.hpp
+    - icon: ':heavy_check_mark:'
       path: head.hpp
       title: head.hpp
   - name: io
@@ -20,8 +23,14 @@ data:
       path: io/Printer.hpp
       title: io/Printer.hpp
     - icon: ':heavy_check_mark:'
+      path: io/Printer_local.hpp
+      title: io/Printer_local.hpp
+    - icon: ':heavy_check_mark:'
       path: io/Scanner.hpp
       title: io/Scanner.hpp
+    - icon: ':heavy_check_mark:'
+      path: io/Scanner_local.hpp
+      title: io/Scanner_local.hpp
   verificationCategories:
   - name: test/library_checker
     pages:

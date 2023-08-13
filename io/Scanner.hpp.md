@@ -9,9 +9,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/library_checker/static_range_sum.test.cpp
-    title: test/library_checker/static_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -54,7 +51,6 @@ data:
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp
-  - test/library_checker/static_range_sum.test.cpp
 documentation_of: io/Scanner.hpp
 layout: document
 redirect_from:

@@ -27,15 +27,15 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line 1 \"\
     head.hpp\"\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\"\
     )\n#include<bits/stdc++.h>\n#define ioclear std::ios::sync_with_stdio(false);std::cin.tie(nullptr);std::cout.tie(nullptr);\n\
-    #define endl '\\n'\n#define CLOCK 1e3 * clock() / CLOCKS_PER_SEC\n#line 2 \"data_structure/1D-fenwick.hpp\"\
-    \n\ntemplate<typename T>\nstruct Fenwick\n{\n\tconst int n;\n\tstd::vector<T>\
-    \ a;\n\n\tFenwick(int _n) : n(_n), a(_n) {}\n\n\tvoid add(int x, T v)\n\t{\n\t\
-    \tfor(int i = x;i <= n;i += i & -i)\n\t\t\ta[i] += v;\n\t\treturn;\n\t}\n\n\t\
-    T sum(int x)\n\t{\n\t\tT Ans = 0;\n\t\tfor(int i = x;i;i -= i & -i)\n\t\t\tAns\
-    \ += a[i];\n\t\treturn Ans;\n\t}\n\n\tT Rangesum(int l, int r) {return sum(r)\
-    \ - sum(l - 1);} // [l, r]\n};\n#line 2 \"io/Scanner.hpp\"\n\nclass Scanner\n\
-    {\npublic:\n\tScanner(std::FILE *f = stdin, std::size_t enough_buffer_size = 1\
-    \ << 25)\n\t\t: f_(f), buffer_(new char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\
+    #define endl '\\n'\n#define CLOCK 1e3 * clock() / CLOCKS_PER_SEC\n\n\n#line 2\
+    \ \"data_structure/1D-fenwick.hpp\"\n\ntemplate<typename T>\nstruct Fenwick\n\
+    {\n\tconst int n;\n\tstd::vector<T> a;\n\n\tFenwick(int _n) : n(_n), a(_n) {}\n\
+    \n\tvoid add(int x, T v)\n\t{\n\t\tfor(int i = x;i <= n;i += i & -i)\n\t\t\ta[i]\
+    \ += v;\n\t\treturn;\n\t}\n\n\tT sum(int x)\n\t{\n\t\tT Ans = 0;\n\t\tfor(int\
+    \ i = x;i;i -= i & -i)\n\t\t\tAns += a[i];\n\t\treturn Ans;\n\t}\n\n\tT Rangesum(int\
+    \ l, int r) {return sum(r) - sum(l - 1);} // [l, r]\n};\n#line 2 \"io/Scanner.hpp\"\
+    \n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE *f = stdin, std::size_t enough_buffer_size\
+    \ = 1 << 25)\n\t\t: f_(f), buffer_(new char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\
     \t\t  buffer_tail_(buffer_ + std::fread(buffer_, sizeof(char), enough_buffer_size\
     \ + 32, f_)) {*buffer_tail_ = '\\0';}\n\t~Scanner() {delete[] buffer_;}\n\t\n\t\
     template<typename T>\n\tstd::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T,\
@@ -99,7 +99,7 @@ data:
   isVerificationFile: true
   path: test/library_checker/point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-13 19:20:30+08:00'
+  timestamp: '2023-08-13 21:39:22+08:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library_checker/point_add_range_sum.test.cpp

@@ -31,6 +31,8 @@ data:
 
     #define CLOCK 1e3 * clock() / CLOCKS_PER_SEC
 
+
+
     '
   code: '#pragma GCC optimize("Ofast")
 
@@ -44,12 +46,14 @@ data:
 
     #define CLOCK 1e3 * clock() / CLOCKS_PER_SEC
 
+
+
     '
   dependsOn: []
   isVerificationFile: false
   path: head.hpp
   requiredBy: []
-  timestamp: '2023-08-13 18:01:43+08:00'
+  timestamp: '2023-08-13 21:39:22+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
