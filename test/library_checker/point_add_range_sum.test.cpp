@@ -4,16 +4,18 @@
 #include "io/Scanner.hpp"
 #include "io/Printer.hpp"
 
+using i64 = long long;
+constexpr int mmax = 5E5 + 10;
+
 Scanner scanner;
 Printer printer;
-
-using i64 = long long;
+Fenwick<i64> fenwick(mmax);
 
 int main()
 {
     i64 n, q;
     scanner.scan(n, q);
-    Fenwick<i64> fenwick(n + 10);
+    
     for(int i = 1;i <= n;i++)
     {
             i64 x;
