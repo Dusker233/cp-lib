@@ -1,6 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
-#include "my_template.hpp"
+#include "head.hpp"
 #include "data_structure/DSU.hpp"
+#include "Scanner.hpp"
+#include "Printer.hpp"
+
+Scanner scanner;
+Printer printer;
 
 int main()
 {
@@ -9,15 +14,15 @@ int main()
 	#endif
 
 	int n, q;
-	std::cin >> n >> q;
+	scanner.scan(n, q);
 	DSU<int> dsu(n + 10);
 	for(int i = 1;i <= q;i++)
 	{
 		int t, u, v;
-		std::cin >> t >> u >> v;
+		scanner.scan(t, u, v);
 		if(t == 0)
 			dsu.merge(u, v);
 		else
-			std::cout << (dsu.same(u, v) ? 1 : 0) << endl;
+			printer.print(dsu.same(u, v)), printer.putchar('\n');
 	}
 }
