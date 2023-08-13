@@ -81,6 +81,12 @@ public:
 		return (..., print(x));
 	}
 
+	template<typename T>
+	void println(T x)
+	{
+		return this->print(x), this.putchar('\n');
+	}
+
 private:
 	std::FILE *f_;
 	char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;
