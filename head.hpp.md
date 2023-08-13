@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: '#line 1 "my_template.hpp"
+  bundledCode: '#line 1 "head.hpp"
 
     #pragma GCC optimize("Ofast")
 
@@ -41,16 +41,16 @@ data:
     '
   dependsOn: []
   isVerificationFile: false
-  path: my_template.hpp
+  path: head.hpp
   requiredBy: []
-  timestamp: '2023-08-12 16:43:03+08:00'
+  timestamp: '2023-08-13 18:01:43+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/DSU.test.cpp
-documentation_of: my_template.hpp
+documentation_of: head.hpp
 layout: document
 redirect_from:
-- /library/my_template.hpp
-- /library/my_template.hpp.html
-title: my_template.hpp
+- /library/head.hpp
+- /library/head.hpp.html
+title: head.hpp
 ---
