@@ -13,9 +13,6 @@ data:
   - icon: ':x:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':x:'
-    path: math/modint.hpp
-    title: math/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -31,42 +28,20 @@ data:
     \n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\")\n#include<bits/stdc++.h>\n\
     #define ioclear std::ios::sync_with_stdio(false);std::cin.tie(nullptr);std::cout.tie(nullptr);\n\
     #define endl '\\n'\n#define CLOCK 1e3 * clock() / CLOCKS_PER_SEC\n\n\n#line 2\
-    \ \"math/modint.hpp\"\n\nconstexpr int P = 998244353;\nusing i64 = long long;\n\
-    \n// assume -P <= x < 2P\nint norm(int x) {\n    if (x < 0) {\n        x += P;\n\
-    \    }\n    if (x >= P) {\n        x -= P;\n    }\n    return x;\n}\ntemplate<class\
-    \ T>\nT power(T a, i64 b) {\n    T res = 1;\n    for (; b; b /= 2, a *= a) {\n\
-    \        if (b % 2) {\n            res *= a;\n        }\n    }\n    return res;\n\
-    }\nstruct Z {\n    int x;\n    Z(int x = 0) : x(norm(x)) {}\n    Z(i64 x) : x(norm(x\
-    \ % P)) {}\n    int val() const {\n        return x;\n    }\n    Z operator-()\
-    \ const {\n        return Z(norm(P - x));\n    }\n    Z inv() const {\n      \
-    \  assert(x != 0);\n        return power(*this, P - 2);\n    }\n    Z &operator*=(const\
-    \ Z &rhs) {\n        x = i64(x) * rhs.x % P;\n        return *this;\n    }\n \
-    \   Z &operator+=(const Z &rhs) {\n        x = norm(x + rhs.x);\n        return\
-    \ *this;\n    }\n    Z &operator-=(const Z &rhs) {\n        x = norm(x - rhs.x);\n\
-    \        return *this;\n    }\n    Z &operator/=(const Z &rhs) {\n        return\
-    \ *this *= rhs.inv();\n    }\n    friend Z operator*(const Z &lhs, const Z &rhs)\
-    \ {\n        Z res = lhs;\n        res *= rhs;\n        return res;\n    }\n \
-    \   friend Z operator+(const Z &lhs, const Z &rhs) {\n        Z res = lhs;\n \
-    \       res += rhs;\n        return res;\n    }\n    friend Z operator-(const\
-    \ Z &lhs, const Z &rhs) {\n        Z res = lhs;\n        res -= rhs;\n       \
-    \ return res;\n    }\n    friend Z operator/(const Z &lhs, const Z &rhs) {\n \
-    \       Z res = lhs;\n        res /= rhs;\n        return res;\n    }\n    friend\
-    \ std::istream &operator>>(std::istream &is, Z &a) {\n        i64 v;\n       \
-    \ is >> v;\n        a = Z(v);\n        return is;\n    }\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const Z &a) {\n        return os << a.val();\n\
-    \    }\n};\n#line 2 \"math/matrix.hpp\"\n\ntemplate<typename T>\nstruct matrix\n\
-    {\n\tint row, col;\n\tstd::vector<std::vector<T>> m;\n\tmatrix(int r, int c, int\
-    \ val): row(r), col(c), m(row + 1, std::vector<T>(col + 1, val)) {}\n    matrix(int\
-    \ r, int c, std::vector<std::vector<T>> _m): row(r), col(c), m(_m) {}\n\t matrix\
-    \ operator *= (const matrix &rhs)\n\t {\n\t \tassert(col == rhs.row);\n\t \tstd::vector<std::vector<T>>\
-    \ tmp(row + 1, std::vector<T>(rhs.col + 1, 0));\n\t \tfor(int k = 1;k <= col;k++)\n\
-    \t \t\tfor(int i = 1;i <= row;i++)\n\t \t\t\tfor(int j = 1;j <= rhs.col;j++)\n\
-    \t \t\t\t\ttmp[i][j] += m[i][k] * rhs.m[k][j];\n\t \tm = tmp;\n\t \treturn *this;\n\
-    \t }\n\tfriend matrix operator *(const matrix &lhs, const matrix &rhs)\n\t{\n\t\
-    \tassert(lhs.col == rhs.row);\n        matrix res = lhs;\n        res *= rhs;\n\
-    \        return res;\n\t}\n};\n\nmatrix<int> pow(int k, matrix<int> m)\n{\n  \
-    \  k--;\n\tmatrix<int> Ans = m;\n\twhile(k)\n\t{\n\t\tif(k & 1)\n\t\t\tAns *=\
-    \ m;\n\t\tm *= m;\n\t\tk >>= 1;\n\t}\n\treturn Ans;\n}\n#line 2 \"io/Scanner.hpp\"\
+    \ \"math/matrix.hpp\"\n\nusing i64 = long long;\n\ntemplate<typename T>\nstruct\
+    \ matrix\n{\n\tint row, col;\n\ti64 P;\n\tstd::vector<std::vector<T>> m;\n\tmatrix(int\
+    \ r, int c, int val, i64 p): row(r), col(c), m(row + 1, std::vector<T>(col + 1,\
+    \ val)), P(p) {}\n    matrix(int r, int c, std::vector<std::vector<T>> _m, i64\
+    \ p): row(r), col(c), m(_m), P(p) {}\n\t matrix operator *= (const matrix &rhs)\n\
+    \t {\n\t \tassert(col == rhs.row);\n\t \tstd::vector<std::vector<T>> tmp(row +\
+    \ 1, std::vector<T>(rhs.col + 1, 0));\n\t \tfor(int k = 1;k <= col;k++)\n\t \t\
+    \tfor(int i = 1;i <= row;i++)\n\t \t\t\tfor(int j = 1;j <= rhs.col;j++)\n\t \t\
+    \t\t\ttmp[i][j] = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]) % P)) % P;\n\t \tm = tmp;\n\
+    \t \treturn *this;\n\t }\n\tfriend matrix operator *(const matrix &lhs, const\
+    \ matrix &rhs)\n\t{\n\t\tassert(lhs.col == rhs.row);\n        matrix res = lhs;\n\
+    \        res *= rhs;\n        return res;\n\t}\n};\n\nmatrix<int> pow(int k, matrix<int>\
+    \ m)\n{\n    k--;\n\tmatrix<int> Ans = m;\n\twhile(k)\n\t{\n\t\tif(k & 1)\n\t\t\
+    \tAns *= m;\n\t\tm *= m;\n\t\tk >>= 1;\n\t}\n\treturn Ans;\n}\n#line 2 \"io/Scanner.hpp\"\
     \n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE *f = stdin, std::size_t enough_buffer_size\
     \ = 1 << 25)\n\t\t: f_(f), buffer_(new char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\
     \t\t  buffer_tail_(buffer_ + std::fread(buffer_, sizeof(char), enough_buffer_size\
@@ -104,38 +79,34 @@ data:
     \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
     \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
     \ this->print(x), this->putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
-    char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n#line 7 \"test/library_checker/matrix_product.test.cpp\"\
-    \n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\tioclear;\n\tint n,\
-    \ m, k;\n\tscanner.scan(n, m, k);\n\tstd::vector<std::vector<Z>> a(n + 1, std::vector<Z>(m\
-    \ + 1)), b(m + 1, std::vector<Z>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int\
-    \ j = 1;j <= m;j++)\n\t\t{\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\ta[i][j]\
-    \ = x;\n\t\t}\n\tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\
-    {\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\tb[i][j] = x;\n\t\t}\n\tmatrix<Z>\
-    \ A(n, m, a), B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int\
-    \ j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j].val()), printer.putchar(' ');\n\
-    \t\tprinter.putchar('\\n');\n\t}\n}\n"
+    char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n#line 6 \"test/library_checker/matrix_product.test.cpp\"\
+    \n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\tint n, m, k;\n\tscanner.scan(n,\
+    \ m, k);\n\tstd::vector<std::vector<i64>> a(n + 1, std::vector<i64>(m + 1)), b(m\
+    \ + 1, std::vector<i64>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int j =\
+    \ 1;j <= m;j++)\n\t\t\tscanner.scan(a[i][j]);\n\tfor(int i = 1;i <= m;i++)\n\t\
+    \tfor(int j = 1;j <= k;j++)\n\t\t\tscanner.scan(b[i][j]);\n\tmatrix<i64> A(n,\
+    \ m, a, 998244353ll), B(m, k, b, 998244353ll);\n\tA *= B;\n\tfor(int i = 1;i <=\
+    \ n;i++)\n\t{\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]),\
+    \ printer.putchar(' ');\n\t\tprinter.putchar('\\n');\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
-    \ \"head.hpp\"\n#include \"math/modint.hpp\"\n#include \"math/matrix.hpp\"\n#include\
-    \ \"io/Scanner.hpp\"\n#include \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter\
-    \ printer;\n\nint main()\n{\n\tioclear;\n\tint n, m, k;\n\tscanner.scan(n, m,\
-    \ k);\n\tstd::vector<std::vector<Z>> a(n + 1, std::vector<Z>(m + 1)), b(m + 1,\
-    \ std::vector<Z>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int j = 1;j <=\
-    \ m;j++)\n\t\t{\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\ta[i][j] = x;\n\t\t\
-    }\n\tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t{\n\t\t\ti64\
-    \ x;\n\t\t\tscanner.scan(x);\n\t\t\tb[i][j] = x;\n\t\t}\n\tmatrix<Z> A(n, m, a),\
-    \ B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int j = 1;j\
-    \ <= k;j++)\n\t\t\tprinter.print(A.m[i][j].val()), printer.putchar(' ');\n\t\t\
-    printer.putchar('\\n');\n\t}\n}"
+    \ \"head.hpp\"\n#include \"math/matrix.hpp\"\n#include \"io/Scanner.hpp\"\n#include\
+    \ \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\t\
+    int n, m, k;\n\tscanner.scan(n, m, k);\n\tstd::vector<std::vector<i64>> a(n +\
+    \ 1, std::vector<i64>(m + 1)), b(m + 1, std::vector<i64>(k + 1));\n\tfor(int i\
+    \ = 1;i <= n;i++)\n\t\tfor(int j = 1;j <= m;j++)\n\t\t\tscanner.scan(a[i][j]);\n\
+    \tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tscanner.scan(b[i][j]);\n\
+    \tmatrix<i64> A(n, m, a, 998244353ll), B(m, k, b, 998244353ll);\n\tA *= B;\n\t\
+    for(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]),\
+    \ printer.putchar(' ');\n\t\tprinter.putchar('\\n');\n\t}\n}"
   dependsOn:
   - head.hpp
-  - math/modint.hpp
   - math/matrix.hpp
   - io/Scanner.hpp
   - io/Printer.hpp
   isVerificationFile: true
   path: test/library_checker/matrix_product.test.cpp
   requiredBy: []
-  timestamp: '2023-08-15 19:43:27+08:00'
+  timestamp: '2023-08-15 19:55:42+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library_checker/matrix_product.test.cpp

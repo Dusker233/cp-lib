@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/library_checker/matrix_product.test.cpp
-    title: test/library_checker/matrix_product.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/modint.hpp\"\n\nconstexpr int P = 998244353;\nusing\
@@ -64,9 +61,8 @@ data:
   path: math/modint.hpp
   requiredBy: []
   timestamp: '2023-08-15 19:34:51+08:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/library_checker/matrix_product.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:

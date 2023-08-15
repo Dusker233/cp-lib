@@ -36,7 +36,7 @@ data:
     - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: math/modint.hpp
       title: math/modint.hpp
   verificationCategories:
