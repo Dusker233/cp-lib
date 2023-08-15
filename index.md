@@ -19,13 +19,13 @@ data:
       title: head.hpp
   - name: io
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: io/Printer.hpp
       title: io/Printer.hpp
     - icon: ':heavy_check_mark:'
       path: io/Printer_local.hpp
       title: io/Printer_local.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: io/Scanner.hpp
       title: io/Scanner.hpp
     - icon: ':heavy_check_mark:'

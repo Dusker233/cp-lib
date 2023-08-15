@@ -6,12 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/DSU.test.cpp
     title: test/library_checker/DSU.test.cpp
+  - icon: ':x:'
+    path: test/library_checker/matrix_product.test.cpp
+    title: test/library_checker/matrix_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE\
@@ -69,10 +72,11 @@ data:
   path: io/Printer.hpp
   requiredBy: []
   timestamp: '2023-08-13 19:20:30+08:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp
+  - test/library_checker/matrix_product.test.cpp
 documentation_of: io/Printer.hpp
 layout: document
 redirect_from:

@@ -4,6 +4,12 @@ data:
   - icon: ':question:'
     path: head.hpp
     title: head.hpp
+  - icon: ':question:'
+    path: io/Printer.hpp
+    title: io/Printer.hpp
+  - icon: ':question:'
+    path: io/Scanner.hpp
+    title: io/Scanner.hpp
   - icon: ':x:'
     path: math/matrix.hpp
     title: math/matrix.hpp
@@ -60,31 +66,76 @@ data:
     \tassert(lhs.col == rhs.row);\n        matrix res = lhs;\n        res *= rhs;\n\
     \        return res;\n\t}\n};\n\nmatrix<int> pow(int k, matrix<int> m)\n{\n  \
     \  k--;\n\tmatrix<int> Ans = m;\n\twhile(k)\n\t{\n\t\tif(k & 1)\n\t\t\tAns *=\
-    \ m;\n\t\tm *= m;\n\t\tk >>= 1;\n\t}\n\treturn Ans;\n}\n#line 5 \"test/library_checker/matrix_product.test.cpp\"\
-    \n\nint main()\n{\n\tioclear;\n\tint n, m, k;\n\tstd::cin >> n >> m >> k;\n\t\
-    std::vector<std::vector<Z>> a(n + 1, std::vector<Z>(m + 1)), b(m + 1, std::vector<Z>(k\
-    \ + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int j = 1;j <= m;j++)\n\t\t\tstd::cin\
-    \ >> a[i][j];\n\tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\
-    \tstd::cin >> b[i][j];\n\tmatrix<Z> A(n, m, a), B(m, k, b);\n\tA *= B;\n\tfor(int\
-    \ i = 1;i <= n;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tstd::cout << A.m[i][j]\
-    \ << \" \\n\"[j == k];\n}\n"
+    \ m;\n\t\tm *= m;\n\t\tk >>= 1;\n\t}\n\treturn Ans;\n}\n#line 2 \"io/Scanner.hpp\"\
+    \n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE *f = stdin, std::size_t enough_buffer_size\
+    \ = 1 << 25)\n\t\t: f_(f), buffer_(new char[enough_buffer_size + 32]), buffer_head_(buffer_),\n\
+    \t\t  buffer_tail_(buffer_ + std::fread(buffer_, sizeof(char), enough_buffer_size\
+    \ + 32, f_)) {*buffer_tail_ = '\\0';}\n\t~Scanner() {delete[] buffer_;}\n\t\n\t\
+    template<typename T>\n\tstd::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T,\
+    \ char> && std::is_signed_v<T>, bool>\n\tscan(T &x)\n\t{\n\t\tx = 0;\n\t\twhile(*buffer_head_\
+    \ != '-' && std::isspace(*buffer_head_))\n\t\t\t++buffer_head_;\n\t\tbool is_neg\
+    \ = *buffer_head_ == '-' && ++buffer_head_;\n\t\tchar *old_buffer_head = buffer_head_;\n\
+    \t\tif(is_neg)\n\t\t\twhile(std::isdigit(*buffer_head_)) x = x * 10 - (*buffer_head_++\
+    \ - '0');\n\t\telse\n\t\t\twhile(std::isdigit(*buffer_head_)) x = x * 10 + (*buffer_head_++\
+    \ - '0');\n\t\treturn buffer_head_ != old_buffer_head;\n\t}  \n\n\ttemplate<typename...\
+    \ T>\n\tbool scan(T &...x)\n\t{\n\t\treturn (... && scan(x));\n\t}\n\nprivate:\n\
+    \tstd::FILE *f_;\n\tchar *buffer_, *buffer_head_, *buffer_tail_;\n};\n#line 2\
+    \ \"io/Printer.hpp\"\n\nclass Printer\n{\npublic:\n\tPrinter(std::FILE *f = stdout,\
+    \ std::size_t buffer_size = 100000)\n\t\t: f_(f), buffer_(new char[buffer_size\
+    \ + 32]), buffer_head_(buffer_),\n\t\t  buffer_end_(buffer_ + buffer_size + 32),\
+    \ stk_(new char[32]), top_(stk_) {}\n\t~Printer()\n\t{\n\t\tflush();\n\t\tdelete[]\
+    \ stk_;\n\t\tdelete[] buffer_;\n\t}\n\n\tvoid flush()\n\t{\n\t\tstd::fwrite(buffer_,\
+    \ buffer_head_ - buffer_, sizeof(char), f_);\n\t\tbuffer_head_ = buffer_;\n\t\
+    }\n\n\tvoid putchar(char x)\n\t{\n\t\tif(buffer_end_ == buffer_head_)\n\t\t\t\
+    flush();\n\t\t*buffer_head_++ = x;\n\t}\n\n\ttemplate<typename T>\n\tstd::enable_if_t<std::is_integral_v<T>\
+    \ && !std::is_same_v<T, char> && std::is_signed_v<T>, void>\n\tprint(T x)\n\t\
+    {\n\t\tif(x == 0)\n\t\t\treturn this->putchar('0');\n\t\tif(x < 0)\n\t\t{\n\t\t\
+    \tputchar('-');\n\t\t\tdo\n\t\t\t{\n\t\t\t\tT y = x / 10;\n\t\t\t\t*top_++ = y\
+    \ * 10 - x + '0';\n\t\t\t\tx = y;\n\t\t\t} while(x != 0);\n\t\t}\n\t\telse\n\t\
+    \t{\n\t\t\tdo\n\t\t\t{\n\t\t\t\tT y = x / 10;\n\t\t\t\t*top_++ = x - y * 10 +\
+    \ '0';\n\t\t\t\tx = y;\n\t\t\t} while(x != 0);\n\t\t}\n\t\tif(buffer_end_ - buffer_head_\
+    \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
+    \t}\n\n\tvoid print(char x) {return this->putchar(x);}\n\n\ttemplate<typename\
+    \ T>\n\tstd::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, char> &&\
+    \ std::is_unsigned_v<T>, void>\n\tprint(T x)\n\t{\n\t\tif(x == 0)\n\t\t\treturn\
+    \ this->putchar('0');\n\t\tdo\n\t\t{\n\t\t\tT y = x / 10;\n\t\t\t*top_++ = x -\
+    \ y * 10 + '0';\n\t\t\tx = y;\n\t\t} while(x != 0);\n\t\tif(buffer_end_ - buffer_head_\
+    \ < top_ - stk_)\n\t\t\tflush();\n\t\twhile(top_ != stk_) *buffer_head_++ = *--top_;\n\
+    \t}\n\n\ttemplate<typename... T>\n\tvoid print(T... x)\n\t{\n\t\treturn (...,\
+    \ print(x));\n\t}\n\n\ttemplate<typename T>\n\tvoid println(T x)\n\t{\n\t\treturn\
+    \ this->print(x), this->putchar('\\n');\n\t}\n\nprivate:\n\tstd::FILE *f_;\n\t\
+    char *buffer_, *buffer_head_, *buffer_end_, *stk_, *top_;\n};\n#line 7 \"test/library_checker/matrix_product.test.cpp\"\
+    \n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\tioclear;\n\tint n,\
+    \ m, k;\n\tscanner.scan(n, m, k);\n\tstd::vector<std::vector<Z>> a(n + 1, std::vector<Z>(m\
+    \ + 1)), b(m + 1, std::vector<Z>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int\
+    \ j = 1;j <= m;j++)\n\t\t{\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\ta[i][j]\
+    \ = x;\n\t\t}\n\tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\
+    {\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\tb[i][j] = x;\n\t\t}\n\tmatrix<Z>\
+    \ A(n, m, a), B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int\
+    \ j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j].val()), printer.putchar(' ');\n\
+    \t\tprinter.putchar('\\n');\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
-    \ \"head.hpp\"\n#include \"math/modint.hpp\"\n#include \"math/matrix.hpp\"\n\n\
-    int main()\n{\n\tioclear;\n\tint n, m, k;\n\tstd::cin >> n >> m >> k;\n\tstd::vector<std::vector<Z>>\
-    \ a(n + 1, std::vector<Z>(m + 1)), b(m + 1, std::vector<Z>(k + 1));\n\tfor(int\
-    \ i = 1;i <= n;i++)\n\t\tfor(int j = 1;j <= m;j++)\n\t\t\tstd::cin >> a[i][j];\n\
-    \tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tstd::cin >>\
-    \ b[i][j];\n\tmatrix<Z> A(n, m, a), B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i\
-    \ <= n;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tstd::cout << A.m[i][j] << \"\
-    \ \\n\"[j == k];\n}"
+    \ \"head.hpp\"\n#include \"math/modint.hpp\"\n#include \"math/matrix.hpp\"\n#include\
+    \ \"io/Scanner.hpp\"\n#include \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter\
+    \ printer;\n\nint main()\n{\n\tioclear;\n\tint n, m, k;\n\tscanner.scan(n, m,\
+    \ k);\n\tstd::vector<std::vector<Z>> a(n + 1, std::vector<Z>(m + 1)), b(m + 1,\
+    \ std::vector<Z>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int j = 1;j <=\
+    \ m;j++)\n\t\t{\n\t\t\ti64 x;\n\t\t\tscanner.scan(x);\n\t\t\ta[i][j] = x;\n\t\t\
+    }\n\tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t{\n\t\t\ti64\
+    \ x;\n\t\t\tscanner.scan(x);\n\t\t\tb[i][j] = x;\n\t\t}\n\tmatrix<Z> A(n, m, a),\
+    \ B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int j = 1;j\
+    \ <= k;j++)\n\t\t\tprinter.print(A.m[i][j].val()), printer.putchar(' ');\n\t\t\
+    printer.putchar('\\n');\n\t}\n}"
   dependsOn:
   - head.hpp
   - math/modint.hpp
   - math/matrix.hpp
+  - io/Scanner.hpp
+  - io/Printer.hpp
   isVerificationFile: true
   path: test/library_checker/matrix_product.test.cpp
   requiredBy: []
-  timestamp: '2023-08-15 19:36:42+08:00'
+  timestamp: '2023-08-15 19:43:27+08:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library_checker/matrix_product.test.cpp
