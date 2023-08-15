@@ -1,4 +1,4 @@
-#PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
 #include "head.hpp"
 #include "math/modint.hpp"
 #include "math/matrix.hpp"
