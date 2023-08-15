@@ -1,12 +1,15 @@
 #pragma once
 
+using i64 = long long;
+
 template<typename T>
 struct matrix
 {
 	int row, col;
+	i64 P;
 	std::vector<std::vector<T>> m;
-	matrix(int r, int c, int val): row(r), col(c), m(row + 1, std::vector<T>(col + 1, val)) {}
-    matrix(int r, int c, std::vector<std::vector<T>> _m): row(r), col(c), m(_m) {}
+	matrix(int r, int c, int val, i64 p): row(r), col(c), m(row + 1, std::vector<T>(col + 1, val)), P(p) {}
+    matrix(int r, int c, std::vector<std::vector<T>> _m, i64 p): row(r), col(c), m(_m), P(p) {}
 	 matrix operator *= (const matrix &rhs)
 	 {
 	 	assert(col == rhs.row);
@@ -14,7 +17,7 @@ struct matrix
 	 	for(int k = 1;k <= col;k++)
 	 		for(int i = 1;i <= row;i++)
 	 			for(int j = 1;j <= rhs.col;j++)
-	 				tmp[i][j] += m[i][k] * rhs.m[k][j];
+	 				tmp[i][j] = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]) % P)) % P;
 	 	m = tmp;
 	 	return *this;
 	 }
