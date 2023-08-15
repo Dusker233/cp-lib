@@ -14,7 +14,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: debug.hpp
       title: debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: head.hpp
       title: head.hpp
   - name: io
@@ -33,10 +33,10 @@ data:
       title: io/Scanner_local.hpp
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/modint.hpp
       title: math/modint.hpp
   verificationCategories:
