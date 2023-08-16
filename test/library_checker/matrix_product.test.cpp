@@ -18,7 +18,7 @@ int main()
 	for(int i = 1;i <= m;i++)
 		for(int j = 1;j <= k;j++)
 			scanner.scan(b[i][j]);
-	matrix<i64> A(n, m, a, 998244353ll), B(m, k, b, 998244353ll);
+	matrix<i64> A(n, m, a), B(m, k, b);
 	A *= B;
 	for(int i = 1;i <= n;i++)
 	{
