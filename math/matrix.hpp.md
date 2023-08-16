@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/matrix_product.test.cpp
     title: test/library_checker/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/1750.test.cpp
     title: test/yukicoder/1750.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\n\nusing i64 = long long;\nconstexpr i64\
@@ -55,7 +55,7 @@ data:
   path: math/matrix.hpp
   requiredBy: []
   timestamp: '2023-08-16 15:34:33+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/1750.test.cpp
   - test/library_checker/matrix_product.test.cpp

@@ -14,18 +14,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: debug.hpp
       title: debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: head.hpp
       title: head.hpp
   - name: io
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: io/Printer.hpp
       title: io/Printer.hpp
     - icon: ':heavy_check_mark:'
       path: io/Printer_local.hpp
       title: io/Printer_local.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: io/Scanner.hpp
       title: io/Scanner.hpp
     - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
       title: io/Scanner_local.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
@@ -56,7 +56,7 @@ data:
       title: test/library_checker/static_range_sum.test.cpp
   - name: test/yukicoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/1750.test.cpp
       title: test/yukicoder/1750.test.cpp
 layout: toppage

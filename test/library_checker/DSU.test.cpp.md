@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/DSU.hpp
     title: data_structure/DSU.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: head.hpp
     title: head.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: io/Printer.hpp
     title: io/Printer.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: io/Scanner.hpp
     title: io/Scanner.hpp
   _extendedRequiredBy: []
