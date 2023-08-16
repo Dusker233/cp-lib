@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: debug.hpp
     title: debug.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: head.hpp
     title: head.hpp
   - icon: ':heavy_check_mark:'

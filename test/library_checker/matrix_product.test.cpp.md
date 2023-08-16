@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: head.hpp
     title: head.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: io/Printer.hpp
     title: io/Printer.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: io/Scanner.hpp
     title: io/Scanner.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -28,15 +28,17 @@ data:
     \n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\")\n#include<bits/stdc++.h>\n\
     #define ioclear std::ios::sync_with_stdio(false);std::cin.tie(nullptr);std::cout.tie(nullptr);\n\
     #define endl '\\n'\n#define CLOCK 1e3 * clock() / CLOCKS_PER_SEC\n\n\n#line 2\
-    \ \"math/matrix.hpp\"\n\nusing i64 = long long;\n\ntemplate<typename T>\nstruct\
-    \ matrix\n{\n\tint row, col;\n\ti64 P;\n\tstd::vector<std::vector<T>> m;\n\tmatrix(int\
-    \ r, int c, int val, i64 p): row(r), col(c), m(row + 1, std::vector<T>(col + 1,\
-    \ val)), P(p) {}\n    matrix(int r, int c, std::vector<std::vector<T>> _m, i64\
-    \ p): row(r), col(c), m(_m), P(p) {}\n\t matrix operator *= (const matrix &rhs)\n\
-    \t {\n\t \tassert(col == rhs.row);\n\t \tstd::vector<std::vector<T>> tmp(row +\
-    \ 1, std::vector<T>(rhs.col + 1, 0));\n\t \tfor(int k = 1;k <= col;k++)\n\t \t\
-    \tfor(int i = 1;i <= row;i++)\n\t \t\t\tfor(int j = 1;j <= rhs.col;j++)\n\t \t\
-    \t\t\ttmp[i][j] = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]))) % P;\n\t \tm = tmp;\n\
+    \ \"math/matrix.hpp\"\n\nusing i64 = long long;\nconstexpr i64 P = 998244353;\n\
+    constexpr int mmax = 2000;\n\ntemplate<typename T>\nstruct matrix\n{\n\tint row,\
+    \ col;\n\ti64 m[mmax][mmax];\n\tmatrix(int r, int c, int val): row(r), col(c)\n\
+    \t{\n\t\tmemset(m, 0, sizeof(m));\n\t\tfor(int i = 1;i <= row;i++)\n\t\t\tfor(int\
+    \ j = 1;j <= col;j++)\n\t\t\t\tm[i][j] = val;\n\t}\n    matrix(int r, int c, std::vector<std::vector<T>>\
+    \ _m): row(r), col(c)\n    {\n    \tmemset(m, 0, sizeof(m));\n\t\tfor(int i =\
+    \ 1;i <= row;i++)\n\t\t\tfor(int j = 1;j <= col;j++)\n\t\t\t\tm[i][j] = _m[i][j];\n\
+    \    }\n\t matrix operator *= (const matrix &rhs)\n\t {\n\t \tassert(col == rhs.row);\n\
+    \t \ti64 tmp[mmax][mmax];\n\t \tfor(int k = 1;k <= col;k++)\n\t \t\tfor(int i\
+    \ = 1;i <= row;i++)\n\t \t\t\tfor(int j = 1;j <= rhs.col;j++)\n\t \t\t\t\ttmp[i][j]\
+    \ = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]))) % P;\n\t \tmemcpy(m, tmp, sizeof(tmp));\n\
     \t \treturn *this;\n\t }\n\tfriend matrix operator *(const matrix &lhs, const\
     \ matrix &rhs)\n\t{\n\t\tassert(lhs.col == rhs.row);\n        matrix res = lhs;\n\
     \        res *= rhs;\n        return res;\n\t}\n};\n\nmatrix<int> pow(int k, matrix<int>\
@@ -85,9 +87,9 @@ data:
     \ + 1, std::vector<i64>(k + 1));\n\tfor(int i = 1;i <= n;i++)\n\t\tfor(int j =\
     \ 1;j <= m;j++)\n\t\t\tscanner.scan(a[i][j]);\n\tfor(int i = 1;i <= m;i++)\n\t\
     \tfor(int j = 1;j <= k;j++)\n\t\t\tscanner.scan(b[i][j]);\n\tmatrix<i64> A(n,\
-    \ m, a, 998244353ll), B(m, k, b, 998244353ll);\n\tA *= B;\n\tfor(int i = 1;i <=\
-    \ n;i++)\n\t{\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]),\
-    \ printer.putchar(' ');\n\t\tprinter.putchar('\\n');\n\t}\n}\n"
+    \ m, a), B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int\
+    \ j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]), printer.putchar(' ');\n\t\
+    \tprinter.putchar('\\n');\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
     \ \"head.hpp\"\n#include \"math/matrix.hpp\"\n#include \"io/Scanner.hpp\"\n#include\
     \ \"io/Printer.hpp\"\n\nScanner scanner;\nPrinter printer;\n\nint main()\n{\n\t\
@@ -95,9 +97,9 @@ data:
     \ 1, std::vector<i64>(m + 1)), b(m + 1, std::vector<i64>(k + 1));\n\tfor(int i\
     \ = 1;i <= n;i++)\n\t\tfor(int j = 1;j <= m;j++)\n\t\t\tscanner.scan(a[i][j]);\n\
     \tfor(int i = 1;i <= m;i++)\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tscanner.scan(b[i][j]);\n\
-    \tmatrix<i64> A(n, m, a, 998244353ll), B(m, k, b, 998244353ll);\n\tA *= B;\n\t\
-    for(int i = 1;i <= n;i++)\n\t{\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]),\
-    \ printer.putchar(' ');\n\t\tprinter.putchar('\\n');\n\t}\n}"
+    \tmatrix<i64> A(n, m, a), B(m, k, b);\n\tA *= B;\n\tfor(int i = 1;i <= n;i++)\n\
+    \t{\n\t\tfor(int j = 1;j <= k;j++)\n\t\t\tprinter.print(A.m[i][j]), printer.putchar('\
+    \ ');\n\t\tprinter.putchar('\\n');\n\t}\n}"
   dependsOn:
   - head.hpp
   - math/matrix.hpp
@@ -106,8 +108,8 @@ data:
   isVerificationFile: true
   path: test/library_checker/matrix_product.test.cpp
   requiredBy: []
-  timestamp: '2023-08-16 10:22:37+08:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-16 12:15:23+08:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library_checker/matrix_product.test.cpp
 layout: document

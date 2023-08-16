@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/DSU.test.cpp
     title: test/library_checker/DSU.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/matrix_product.test.cpp
     title: test/library_checker/matrix_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/point_add_range_sum.test.cpp
     title: test/library_checker/point_add_range_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"io/Scanner.hpp\"\n\nclass Scanner\n{\npublic:\n\tScanner(std::FILE\
@@ -50,7 +50,7 @@ data:
   path: io/Scanner.hpp
   requiredBy: []
   timestamp: '2023-08-13 18:04:56+08:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/point_add_range_sum.test.cpp
   - test/library_checker/DSU.test.cpp

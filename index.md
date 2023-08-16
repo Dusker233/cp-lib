@@ -14,18 +14,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: debug.hpp
       title: debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: head.hpp
       title: head.hpp
   - name: io
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: io/Printer.hpp
       title: io/Printer.hpp
     - icon: ':heavy_check_mark:'
       path: io/Printer_local.hpp
       title: io/Printer_local.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: io/Scanner.hpp
       title: io/Scanner.hpp
     - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
       title: io/Scanner_local.hpp
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
@@ -45,7 +45,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library_checker/DSU.test.cpp
       title: test/library_checker/DSU.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/library_checker/matrix_product.test.cpp
       title: test/library_checker/matrix_product.test.cpp
     - icon: ':heavy_check_mark:'
