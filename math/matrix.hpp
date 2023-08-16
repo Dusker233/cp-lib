@@ -17,7 +17,7 @@ struct matrix
 	 	for(int k = 1;k <= col;k++)
 	 		for(int i = 1;i <= row;i++)
 	 			for(int j = 1;j <= rhs.col;j++)
-	 				tmp[i][j] = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]) % P)) % P;
+	 				tmp[i][j] = (tmp[i][j] + ((m[i][k] * rhs.m[k][j]))) % P;
 	 	m = tmp;
 	 	return *this;
 	 }
