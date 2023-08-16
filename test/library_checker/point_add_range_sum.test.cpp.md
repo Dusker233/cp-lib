@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/1D-fenwick.hpp
     title: data_structure/1D-fenwick.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: head.hpp
     title: head.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: io/Printer.hpp
     title: io/Printer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: io/Scanner.hpp
     title: io/Scanner.hpp
   _extendedRequiredBy: []
